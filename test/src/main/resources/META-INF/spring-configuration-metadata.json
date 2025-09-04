@@ -1,0 +1,20 @@
+{
+  "properties": [
+    {
+      "name": "naver.api.client-id",
+      "type": "java.lang.String",
+      "description": "Naver API Client ID for authentication"
+    },
+    {
+      "name": "naver.api.client-secret",
+      "type": "java.lang.String",
+      "description": "Naver API Client Secret for authentication"
+    },
+    {
+      "name": "naver.api.news.url",
+      "type": "java.lang.String",
+      "description": "Naver News API endpoint URL",
+      "defaultValue": "https://openapi.naver.com/v1/search/news.json"
+    }
+  ]
+}
