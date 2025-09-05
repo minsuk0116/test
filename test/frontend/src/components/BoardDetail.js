@@ -107,7 +107,12 @@ function BoardDetail() {
         zIndex: 1
       }}>
         {/* 상단 네비게이션 */}
-        <div style={{ marginBottom: '32px' }}>
+        <div style={{ 
+          marginBottom: '32px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}>
           <button 
             onClick={() => navigate('/')}
             style={{ 
@@ -138,6 +143,71 @@ function BoardDetail() {
           >
             ← 목록으로 돌아가기
           </button>
+          
+          {/* 수정/삭제 버튼들 */}
+          <div style={{ 
+            display: 'flex', 
+            gap: '12px'
+          }}>
+            <Link 
+              to={`/boards/edit/${board.id}`}
+              style={{ 
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white', 
+                padding: '12px 20px', 
+                textDecoration: 'none',
+                borderRadius: '25px',
+                fontSize: '14px',
+                fontWeight: '600',
+                boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)',
+                transition: 'all 0.3s ease',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'translateY(-1px)';
+                e.target.style.boxShadow = '0 6px 16px rgba(102, 126, 234, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)';
+              }}
+            >
+              ✏️ 수정
+            </Link>
+            <button 
+              onClick={handleDelete} 
+              style={{
+                background: 'rgba(231, 76, 60, 0.1)',
+                color: '#e74c3c',
+                padding: '12px 20px',
+                border: '2px solid rgba(231, 76, 60, 0.2)',
+                borderRadius: '25px',
+                fontSize: '14px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = '#e74c3c';
+                e.target.style.color = 'white';
+                e.target.style.transform = 'translateY(-1px)';
+                e.target.style.boxShadow = '0 4px 12px rgba(231, 76, 60, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = 'rgba(231, 76, 60, 0.1)';
+                e.target.style.color = '#e74c3c';
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = 'none';
+              }}
+            >
+              🗑️ 삭제
+            </button>
+          </div>
         </div>
         
         {/* 메인 컨텐츠 */}
@@ -264,72 +334,6 @@ function BoardDetail() {
         {/* 감성분석 결과 */}
         <SentimentAnalysis boardId={board.id} />
 
-        {/* 액션 버튼들 */}
-        <div style={{ 
-          display: 'flex', 
-          gap: '16px',
-          justifyContent: 'center',
-          marginBottom: '40px'
-        }}>
-          <Link 
-            to={`/boards/edit/${board.id}`}
-            style={{ 
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              color: 'white', 
-              padding: '16px 32px', 
-              textDecoration: 'none',
-              borderRadius: '50px',
-              fontSize: '16px',
-              fontWeight: '700',
-              boxShadow: '0 8px 20px rgba(102, 126, 234, 0.3)',
-              transition: 'all 0.3s ease',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.transform = 'translateY(-2px)';
-              e.target.style.boxShadow = '0 12px 30px rgba(102, 126, 234, 0.4)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 8px 20px rgba(102, 126, 234, 0.3)';
-            }}
-          >
-            ✏️ 수정하기
-          </Link>
-          <button 
-            onClick={handleDelete} 
-            style={{
-              background: 'rgba(231, 76, 60, 0.1)',
-              color: '#e74c3c',
-              padding: '16px 32px',
-              border: '2px solid rgba(231, 76, 60, 0.2)',
-              borderRadius: '50px',
-              fontSize: '16px',
-              fontWeight: '700',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = '#e74c3c';
-              e.target.style.color = 'white';
-              e.target.style.transform = 'translateY(-2px)';
-              e.target.style.boxShadow = '0 8px 20px rgba(231, 76, 60, 0.3)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = 'rgba(231, 76, 60, 0.1)';
-              e.target.style.color = '#e74c3c';
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = 'none';
-            }}
-          >
-            🗑️ 삭제하기
-          </button>
-        </div>
 
         {/* 댓글 섹션 */}
         <div style={{
